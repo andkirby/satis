@@ -1,4 +1,5 @@
 Satis - Package Repository Generator
+(Kirby's Edition for multi-package repository)
 ====================================
 
 Simple static Composer repository generator.
