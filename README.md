@@ -1,6 +1,7 @@
 Satis - Package Repository Generator
 ====================================
 (Kirby's Edition for multi-package repository)
+# Multi-package repository
 To use multi-package repository please use type "vcs-namespace".
 ```
 {
@@ -13,6 +14,8 @@ To use multi-package repository please use type "vcs-namespace".
 }
 ```
 It works with andkirby/multi-repo-composer. You may read more about [multi-repository requirements](https://github.com/andkirby/multi-repo-composer).
+
+# Satis
 
 Simple static Composer repository generator.
 
