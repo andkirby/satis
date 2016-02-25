@@ -1,13 +1,12 @@
 <?php
 
 /*
- * This file is part of Satis.
+ * This file is part of composer/satis.
  *
- * (c) Jordi Boggiano <j.boggiano@seld.be>
- *     Nils Adermann <naderman@naderman.de>
+ * (c) Composer <https://github.com/composer>
  *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this source code.
  */
 
 namespace Composer\Satis;
@@ -25,8 +24,9 @@ class Compiler
     /**
      * Compiles satis into a single phar file
      *
+     * @param string $pharFile The full path to the file to create
+     *
      * @throws \RuntimeException
-     * @param  string            $pharFile The full path to the file to create
      */
     public function compile($pharFile = 'satis.phar')
     {
@@ -62,6 +62,17 @@ class Compiler
             ->ignoreVCS(true)
             ->name('*.php')
             ->name('composer-schema.json')
+            ->exclude(array(
+                'phpunit',
+                'mikey179',
+                'phpdocumentor',
+                'sebastian',
+                'phpspec',
+                'doctrine',
+                'test',
+                'tests',
+                'Tests',
+            ))
             ->in(__DIR__.'/../../../vendor/')
         ;
         $finders[] = $finder;
@@ -82,6 +93,8 @@ class Compiler
         $phar->compressFiles(\Phar::GZ);
 
         $this->addFile($phar, new \SplFileInfo(__DIR__.'/../../../LICENSE'), false);
+
+        $this->addFile($phar, new \SplFileInfo(__DIR__.'/../../../res/satis-schema.json'), false);
 
         unset($phar);
     }
@@ -110,7 +123,8 @@ class Compiler
     /**
      * Removes whitespace from a PHP source string while preserving line numbers.
      *
-     * @param  string $source A PHP string
+     * @param string $source A PHP string
+     *
      * @return string The PHP string with the whitespace removed
      */
     private function stripWhitespace($source)
@@ -146,14 +160,14 @@ class Compiler
         return <<<'EOF'
 #!/usr/bin/env php
 <?php
+
 /*
- * This file is part of Satis.
+ * This file is part of composer/statis.
  *
- * (c) Jordi Boggiano <j.boggiano@seld.be>
- *     Nils Adermann <naderman@naderman.de>
+ * (c) Composer <https://github.com/composer>
  *
  * For the full copyright and license information, please view
- * the license that is located at the bottom of this file.
+ * the LICENSE file that was distributed with this source code.
  */
 
 Phar::mapPhar('satis.phar');

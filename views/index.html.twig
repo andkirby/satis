@@ -12,7 +12,13 @@
 
     <div id="doc" class="yui-t7">
         <div id="hd">
-            <h1>{{ name }} Composer Repository</h1>
+            <h1>
+                {% if name %}
+                    {{ name }}
+                {% else %}
+                    The Composer Repository
+                {% endif %}
+            </h1>
             {% if description %}
                 <p>{{ description|raw }}</p>
             {% endif %}
@@ -35,9 +41,20 @@
                 Filter by package name:
                 <input type="text" id="search" autocomplete="off" autofocus />
 
+                <div id="package-list">
                 {% for name, package in packages %}
                     <div>
-                        <h3 id="{{ package.highest.name }}">{{ package.highest.name }}</h3>
+                        <h3 id="{{ package.highest.name }}">{{ package.highest.name }}<a href="#{{ package.highest.name }}"><small>¶</small></a></h3>
+                        {% if package.abandoned %}
+                            <p class="abandoned">
+                                Package {{ package.highest.name }} is abandoned, you should avoid using it.
+                                {% if package.replacement %}
+                                    Use {{ package.replacement }} instead.
+                                {% else %}
+                                    No replacement was suggested.
+                                {% endif %}
+                            </p>
+                        {% endif %}
                         {% if package.highest.description %}
                             <p>{{ package.highest.description }}</p>
                         {% endif %}
@@ -78,8 +95,8 @@
                                         <li>{{ support_type|capitalize }}: <a href="{{ support_url }}">{{ support_url }}</a></li>
                                     {% endfor %}
                                     </ul>
-                                </tr>
-                            </td>
+                                </td>
+                            </tr>
                             {% endif %}
                             <tr>
                                 <th>Releases</th>
@@ -110,6 +127,7 @@
                         </table>
                     </div>
                 {% endfor %}
+                </div>
             </div>
         </div>
         <div id="ft">
@@ -128,10 +146,12 @@
             var ms = 350; // milliseconds
             var needle = $(this).val().toLowerCase(), show;
             timer = setTimeout(function() {
+                $('#package-list').hide();
                 packages.each(function(){
                     show = $(this).text().toLowerCase().indexOf(needle) != -1;
                     $(this).parent().toggle(show);
                 });
+                $('#package-list').show();
             }, ms);
         }).focus();
         $('input#search').change(function(){
