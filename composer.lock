@@ -4,9 +4,47 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "dbf3e694e2ad71c5ecc0386e439a26c8",
-    "content-hash": "ab20896fa5614149d68233cfcb349d35",
+    "hash": "66ddea18e5f19ea7aa68f7b15cfd8581",
+    "content-hash": "c1fcddd7d1d164304340fc0e6fb79e84",
     "packages": [
+        {
+            "name": "andkirby/multi-repo-composer",
+            "version": "v0.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/andkirby/multi-repo-composer.git",
+                "reference": "95f91ac183bf210d1df1284ef94df4815ca488b0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/andkirby/multi-repo-composer/zipball/95f91ac183bf210d1df1284ef94df4815ca488b0",
+                "reference": "95f91ac183bf210d1df1284ef94df4815ca488b0",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0.0"
+            },
+            "require-dev": {
+                "composer/composer": "@alpha"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "AndKirby\\Composer\\MultiRepo\\MultiRepoPlugin",
+                "branch-alias": {
+                    "dev-master": "0.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "AndKirby\\Composer\\MultiRepo": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "time": "2016-02-25 09:38:36"
+        },
         {
             "name": "composer/composer",
             "version": "dev-master",
@@ -17,7 +55,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/dc2f201152f37c2563e328531a6af349ac287cce",
+                "url": "https://api.github.com/repos/composer/composer/zipball/406e087a46e23efc082d08513b787d4f96e19691",
                 "reference": "dc2f201152f37c2563e328531a6af349ac287cce",
                 "shasum": ""
             },
