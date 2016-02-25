@@ -12,7 +12,7 @@
 namespace Composer\Satis\Console;
 
 use Composer\Composer;
-use Composer\Factory;
+use Composer\Satis\Composer\Factory; //set custom factory
 use Composer\IO\ConsoleIO;
 use Composer\Satis\Command;
 use Composer\Satis\Satis;
