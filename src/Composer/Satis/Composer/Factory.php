@@ -29,7 +29,9 @@ class Factory extends \Composer\Factory
     protected function createRepositoryManager(IOInterface $io, Config $config, EventDispatcher $eventDispatcher = null, RemoteFilesystem $rfs = null)
     {
         $rm = parent::createRepositoryManager($io, $config, $eventDispatcher);
-        $rm->setRepositoryClass('gitlab', 'AndKirby\Composer\MultiRepo\Repository\GitLabRepository');
+        if (!isset($rm->getRepositories()['gitlab'])) {
+            $rm->setRepositoryClass('gitlab', 'AndKirby\Composer\MultiRepo\Repository\GitLabRepository');
+        }
         $rm->setRepositoryClass('gitlab-namespace', 'AndKirby\Composer\MultiRepo\Repository\GitLabNamespaceRepository');
         $rm->setRepositoryClass('vcs-namespace', 'AndKirby\Composer\MultiRepo\Repository\VcsNamespaceRepository');
         return $rm;
