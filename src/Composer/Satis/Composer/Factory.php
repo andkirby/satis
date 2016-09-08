@@ -1,6 +1,7 @@
 <?php
 namespace Composer\Satis\Composer;
 
+use AndKirby\Composer\MultiRepo\Repository\VcsNamespaceRepository;
 use Composer\Config;
 use Composer\EventDispatcher\EventDispatcher;
 use Composer\IO\IOInterface;
@@ -24,12 +25,9 @@ class Factory extends \Composer\Factory
      */
     public function addCustomRepositoryClasses(RepositoryManager $rm)
     {
-        if (!isset($rm->getRepositories()['gitlab'])) {
-            $rm->setRepositoryClass('gitlab', 'AndKirby\Composer\MultiRepo\Repository\GitLabRepository');
+        foreach (VcsNamespaceRepository::getTypes() as $type) {
+            $rm->setRepositoryClass($type, VcsNamespaceRepository::class);
         }
-
-        $rm->setRepositoryClass('gitlab-namespace', 'AndKirby\Composer\MultiRepo\Repository\GitLabNamespaceRepository');
-        $rm->setRepositoryClass('vcs-namespace', 'AndKirby\Composer\MultiRepo\Repository\VcsNamespaceRepository');
 
         return $this;
     }
@@ -43,8 +41,12 @@ class Factory extends \Composer\Factory
      * @param  EventDispatcher  $eventDispatcher
      * @param  RemoteFilesystem $rfs
      * @return RepositoryManager
+     * @deprecated This method was used in old versions.
      */
-    protected function createRepositoryManager(IOInterface $io, Config $config, EventDispatcher $eventDispatcher = null,
+    protected function createRepositoryManager(
+        IOInterface $io,
+        Config $config,
+        EventDispatcher $eventDispatcher = null,
         RemoteFilesystem $rfs = null
     ) {
         $rm = parent::createRepositoryManager($io, $config, $eventDispatcher);
