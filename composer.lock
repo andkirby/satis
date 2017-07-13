@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fce6aadd63005e75367f6955b4e64ba9",
-    "content-hash": "f23a2f321f9ebc7629fa67066e5f2740",
+    "hash": "b85c12d907542df5e63815a9ab287203",
+    "content-hash": "f3159fa67133abbfba099893334b3a69",
     "packages": [
         {
             "name": "andkirby/multi-repo-composer",
-            "version": "v0.9.1",
+            "version": "v0.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/andkirby/multi-repo-composer.git",
-                "reference": "b82c3efb6c655eaa0996d11af1eb8d8915bbab25"
+                "reference": "4643317fa4902c895c961c94bd0ba22251d99c3c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/andkirby/multi-repo-composer/zipball/b82c3efb6c655eaa0996d11af1eb8d8915bbab25",
-                "reference": "b82c3efb6c655eaa0996d11af1eb8d8915bbab25",
+                "url": "https://api.github.com/repos/andkirby/multi-repo-composer/zipball/4643317fa4902c895c961c94bd0ba22251d99c3c",
+                "reference": "4643317fa4902c895c961c94bd0ba22251d99c3c",
                 "shasum": ""
             },
             "require": {
@@ -46,7 +46,7 @@
                 "MIT"
             ],
             "description": "Plugin for loading multi-repository packages (several packages in the only repository).",
-            "time": "2017-07-13 17:33:43"
+            "time": "2017-07-13 18:21:11"
         },
         {
             "name": "composer/ca-bundle",
