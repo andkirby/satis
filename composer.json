@@ -22,7 +22,7 @@
     },
     "bin": ["bin/satis"],
     "require": {
-        "andkirby/multi-repo-composer": "^0.9",
+        "andkirby/multi-repo-composer": "~0.9.1",
         "php": "^5.6 || ^7.0",
         "composer/composer": "^1.4",
         "twig/twig": "^1.7 || ^2.0",
