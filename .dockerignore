@@ -1,0 +1,9 @@
+*
+!bin
+!docs
+!res
+!src
+!views
+!composer.json
+!composer.lock
+!LICENSE

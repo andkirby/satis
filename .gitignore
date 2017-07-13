@@ -1,9 +1,6 @@
-/.settings
-/.project
-/.idea
-/.buildpath
-/vendor
-phpunit.xml
-composer.phar
-composer.lock
-satis.phar
+/build/
+/vendor/
+/.php_cs.cache
+/composer.phar
+/phpunit.xml
+/satis.phar
